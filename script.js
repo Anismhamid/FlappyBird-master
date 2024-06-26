@@ -49,7 +49,7 @@ setInterval(function () {
     let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
     let holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     let cTop = -(800 - characterTop);
-    if ((characterTop > 860) || ((blockLeft < 100) && (blockLeft > -0) && ((cTop < holeTop) || (cTop > holeTop -100)))) {
+    if ((characterTop > 860) || ((blockLeft < 100) && (blockLeft > -50) && ((cTop < holeTop) || (cTop  > holeTop + 200)))) {
         alert("Game over. Score: " + (counter - 1));
         document.getElementById('char-img').src = 'gameImages/bird3.png'
         character.style.top = 100 + "px";
@@ -65,7 +65,7 @@ function jump() {
     let jumpInterval = setInterval(function () {
         let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
         if ((characterTop > 6) && (jumpCount < 15)) {
-            character.style.top = (characterTop - 4) + "px";
+            character.style.top = (characterTop -5) + "px";
             document.getElementById('char-img').src = 'gameImages/bird2.png'
         }
         if (jumpCount > 20) {
