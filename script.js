@@ -15,24 +15,26 @@ hole.addEventListener('animationiteration', () => {
 
 });
 
-// hole.style.backgroundColor = 'red'
 
-setInterval(function () {
+let startTheGame = setInterval(function () {
     let array = []
     let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     if (jumping == 0) {
         character.style.top = (characterTop + 3) + "px";
         array.push(counter)
-        document.getElementById('score').innerHTML = `${counter}`;
+        document.getElementById('score').innerText = counter;
     }
-    if (array[0] == 5) {
+    if (array[0] == 30 ) {
         block.style.animation = 'block 4s linear infinite'
         hole.style.animation = 'block 4s linear infinite'
-    } else if (array[0] == 10) {
+
+
+    } else if (array[0] == 60) {
         block.style.animation = 'block 3s linear infinite'
         hole.style.animation = 'block 3s linear infinite'
+
     }
-    else if (array[0] == 15) {
+    else if (array[0] == 100) {
         block.style.animation = 'block 2s linear infinite'
         hole.style.animation = 'block 2s linear infinite'
     }
@@ -41,10 +43,10 @@ setInterval(function () {
 
 
     let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
+    let blockHiegth = parseInt(window.getComputedStyle(block).getPropertyValue("height"));
     let holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     let cTop = -(800 - characterTop);
-    if ((characterTop > 860) || ((blockLeft < 100) && (blockLeft > -50) && ((cTop < holeTop +50 ) || (cTop > holeTop +240)))) {
-        hole.style.backgroundColor = 'red'
+    if ((characterTop > blockHiegth+50) || ((blockLeft < 100) && (blockLeft > -50) && ((cTop < holeTop + 50) || (cTop > holeTop + 240)))) {
         alert("Game over. Score: " + (counter - 1));
         document.getElementById('char-img').src = 'gameImages/bird3.png'
         character.style.top = 100 + "px";
@@ -60,7 +62,7 @@ function jump() {
     let jumpInterval = setInterval(function () {
         let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
         if ((characterTop > 6) && (jumpCount < 15)) {
-            character.style.top = (characterTop - 6) + "px";
+            character.style.top = (characterTop - 5) + "px";
             document.getElementById('char-img').src = 'gameImages/bird2.png'
         }
         if (jumpCount > 20) {
@@ -72,6 +74,7 @@ function jump() {
             document.getElementById('char-img').src = 'gameImages/bird3.png';
         }
         jumpCount++;
+        return
     }, 10);
 }
 
