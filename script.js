@@ -15,6 +15,7 @@ hole.addEventListener('animationiteration', () => {
 
 });
 
+// hole.style.backgroundColor = 'red'
 
 setInterval(function () {
     let array = []
@@ -23,24 +24,17 @@ setInterval(function () {
         character.style.top = (characterTop + 3) + "px";
         array.push(counter)
         document.getElementById('score').innerHTML = `${counter}`;
-
     }
-    for (let i = 0; i < array.length; i++) {
-        if (array[0] == 5) {
-            block.style.animation = 'block 4s linear infinite'
-            hole.style.animation = 'block 4s linear infinite'
-        } else if (array[0] == 10) {
-            block.style.animation = 'block 3s linear infinite'
-            hole.style.animation = 'block 3s linear infinite'
-        }
-        else if (array[0] == 15) {
-            block.style.animation = 'block 2s linear infinite'
-            hole.style.animation = 'block 2s linear infinite'
-        }
-        else if (array[0] == 20) {
-            block.style.animation = 'block 1s linear infinite'
-            hole.style.animation = 'block 1s linear infinite'
-        }
+    if (array[0] == 5) {
+        block.style.animation = 'block 4s linear infinite'
+        hole.style.animation = 'block 4s linear infinite'
+    } else if (array[0] == 10) {
+        block.style.animation = 'block 3s linear infinite'
+        hole.style.animation = 'block 3s linear infinite'
+    }
+    else if (array[0] == 15) {
+        block.style.animation = 'block 2s linear infinite'
+        hole.style.animation = 'block 2s linear infinite'
     }
 
 
@@ -49,7 +43,8 @@ setInterval(function () {
     let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
     let holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     let cTop = -(800 - characterTop);
-    if ((characterTop > 860) || ((blockLeft < 100) && (blockLeft > -50) && ((cTop < holeTop) || (cTop  > holeTop + 200)))) {
+    if ((characterTop > 860) || ((blockLeft < 100) && (blockLeft > -50) && ((cTop < holeTop +50 ) || (cTop > holeTop +240)))) {
+        hole.style.backgroundColor = 'red'
         alert("Game over. Score: " + (counter - 1));
         document.getElementById('char-img').src = 'gameImages/bird3.png'
         character.style.top = 100 + "px";
@@ -65,7 +60,7 @@ function jump() {
     let jumpInterval = setInterval(function () {
         let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
         if ((characterTop > 6) && (jumpCount < 15)) {
-            character.style.top = (characterTop -5) + "px";
+            character.style.top = (characterTop - 6) + "px";
             document.getElementById('char-img').src = 'gameImages/bird2.png'
         }
         if (jumpCount > 20) {

@@ -28,7 +28,7 @@
 }
 
 #block {
-    width: 50px;
+    width: 80px;
     height: 800px;
     position: relative;
     left: 100%;
@@ -45,19 +45,28 @@
     }
 
     100% {
-        left: -60px
+        left: -150px
     }
 }
 
 #hole {
-    width: 50px;
+    width: 80px;
     height: 200px;
-    background: transparent;
     position: relative;
+    background: #fff;
     left: 100%;
     top: 150px;
     animation: block 5s infinite linear;
     z-index: 2;
+    border-radius: 6px;
+    background: #e0e0e0;
+    box-shadow: inset 25px 25px 50px #b5b5b5,
+        inset -25px -25px 50px #ffffff;
+    border-radius: 6px;
+    background: #e0e0e0;
+    box-shadow: inset 25px 25px 96px #949494,
+        inset -25px -25px 96px #ffffff;
+
 }
 
 #character {
