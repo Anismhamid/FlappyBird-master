@@ -22,9 +22,9 @@ let startTheGame = setInterval(function () {
     if (jumping == 0) {
         character.style.top = (characterTop + 3) + "px";
         array.push(counter)
-        document.getElementById('score').innerText = counter;
+        document.getElementById('score').innerText = `Score:${counter}`;
     }
-    if (array[0] == 30 ) {
+    if (array[0] == 30) {
         block.style.animation = 'block 4s linear infinite'
         hole.style.animation = 'block 4s linear infinite'
 
@@ -46,7 +46,7 @@ let startTheGame = setInterval(function () {
     let blockHiegth = parseInt(window.getComputedStyle(block).getPropertyValue("height"));
     let holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     let cTop = -(800 - characterTop);
-    if ((characterTop > blockHiegth+50) || ((blockLeft < 100) && (blockLeft > -50) && ((cTop < holeTop + 50) || (cTop > holeTop + 240)))) {
+    if ((characterTop > blockHiegth + 50) || ((blockLeft < 100) && (blockLeft > -50) && ((cTop < holeTop + 50) || (cTop > holeTop + 240)))) {
         alert("Game over. Score: " + (counter - 1));
         document.getElementById('char-img').src = 'gameImages/bird3.png'
         character.style.top = 100 + "px";

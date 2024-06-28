@@ -19,7 +19,7 @@
 }
 
 #block {
-    width: 100px;
+    width: 80px;
     height: 800px;
     position: relative;
     left: 100%;
@@ -28,7 +28,9 @@
     background-size: cover;
     background-position: center;
     z-index: 2;
+    border-left: 1px solid #ffffff;
 }
+
 
 @keyframes block {
     0% {
@@ -36,25 +38,22 @@
     }
 
     100% {
-        left: -150px
+        left: -60px
     }
 }
 
 #hole {
-    width: 50px;
+    width: 30px;
     height: 200px;
     position: relative;
-    background: #fff;
-    left: 100%;
+    left: 10%;
     top: 150px;
     animation: block 5s infinite linear;
-    z-index: 2;
-    border-radius: 6px;
-    background: #e0e0e0;
-    box-shadow: inset 25px 25px 50px #b5b5b5,
-        inset -25px -25px 50px #ffffff;
-    box-shadow: inset 25px 25px 96px #949494,
-        inset -25px -25px 96px #ffffff;
+    z-index: 3;
+    border-radius: 50%;
+
+    box-shadow:
+        inset 10px 0px 40px #000000;
 
 }
 
@@ -65,7 +64,7 @@
     top: 100px;
     left: 100px;
     border-radius: 50%;
-    z-index: 3;
+    z-index: 1;
     transition: all 5ms inherit;
 }
 
