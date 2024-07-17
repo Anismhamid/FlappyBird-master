@@ -9,7 +9,7 @@
 
 #game {
     width: 100%;
-    height: 800px;
+    height: 700px;
     margin: auto;
     overflow: hidden;
     background: url('./gameImages/deshe2.png');
@@ -21,7 +21,7 @@
 
 #block {
     width: 80px;
-    height: 800px;
+    height: 700px;
     position: relative;
     left: 100%;
     animation: block 5s infinite linear;

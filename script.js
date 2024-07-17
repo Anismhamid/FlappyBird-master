@@ -4,28 +4,30 @@ let character = document.getElementById("character");
 let jumping = 0;
 let counter = 0;
 
+
+function initializeHole() {
+    let random = -((Math.random() * 500) + 200);
+    hole.style.top = random + "px";
+}
 initializeHole()
 
 
+
 hole.addEventListener('animationiteration', () => {
-
-    let random = -((Math.random() * 600) + 200);
-
-    hole.style.top = random + "px";
-
+    initializeHole()
     counter++;
 });
 
 
-let startTheGame = setInterval(function () {
+let startTheGame = setInterval(() => {
     let array = []
     let characterTop = parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     if (jumping == 0) {
         character.style.top = (characterTop + 3) + "px";
         array.push(counter)
-        document.getElementById('score').innerText = `Score:${counter}`;
+        document.getElementById('score').innerText = `Score:${array[0]}`;
     }
-    if (array[0] == 30) {
+    if (array[0] == 5) {
         block.style.animation = 'block 4s linear infinite'
         hole.style.animation = 'block 4s linear infinite'
 
@@ -40,22 +42,12 @@ let startTheGame = setInterval(function () {
         hole.style.animation = 'block 2s linear infinite'
     }
 
-
-
-
     let blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
     let blockHiegth = parseInt(window.getComputedStyle(block).getPropertyValue("height"));
     let holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
-    let cTop = -(800 - characterTop);
-    console.log(cTop);
-    if ((characterTop >= blockHiegth -30) || ((blockLeft < 100) && (blockLeft > -50) && ((cTop < holeTop) || (cTop > holeTop + 150)))) {
-        alert("Game over. Score: " + (counter - 2));
-        console.log(`charTop = ${characterTop}`);
-        console.log(`blockHiegth + 50 = ${blockHiegth + 50}`);
-        console.log(`blockLeft = ${blockLeft}`);
-        console.log(`cTop = ${cTop} `);
-        console.log(`cTop + 50 = ${cTop + 50},`);
-        console.log(`holeTop + 200 = ${holeTop + 200} }`);
+    let cTop = -(700 - characterTop);
+    if ((characterTop > blockHiegth) || ((blockLeft < 100) && (blockLeft > -200) && ((cTop < holeTop) || (cTop > holeTop + 150)))) {
+        alert("Game over. Score: " + (counter));
 
         document.getElementById('char-img').src = 'gameImages/bird3.png'
         character.style.top = 100 + "px";
@@ -65,7 +57,7 @@ let startTheGame = setInterval(function () {
 }, 10);
 
 
-function jump() {
+let jump = () => {
     jumping = 1;
     let jumpCount = 0;
     let jumpInterval = setInterval(function () {
@@ -85,12 +77,6 @@ function jump() {
         jumpCount++;
         return
     }, 10);
-}
-
-
-function initializeHole() {
-    let random = -((Math.random() * 600) + 200);
-    hole.style.top = random + "px";
 }
 
 
